@@ -12,10 +12,11 @@
   height: auto; 
   display: block; 
   transition: filter 0.4s ease-in-out, transform 0.4s ease-in-out;
+  filter: grayscale(100%);
 }
 
 .imagePost:hover img {
-  filter: grayscale(100%);
+  filter: grayscale(0%);
   transform: scale(1.02); 
 }
 
