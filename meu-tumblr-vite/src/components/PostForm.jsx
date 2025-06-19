@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios'; 
+import axios from 'axios';
 import styles from './PostForm.module.css';
 
 const API_URL = 'http://localhost:5000/api/posts';
@@ -8,49 +8,30 @@ function PostForm({ onAddPost }) {
   const [type, setType] = useState('image');
   const [textContent, setTextContent] = useState('');
   const [imageFile, setImageFile] = useState(null);
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
 
   const handleFileChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setImageFile(e.target.files[0]);
-    }
+    if (e.target.files && e.target.files[0]) setImageFile(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); 
-
+    setLoading(true);
     const formData = new FormData();
 
     if (type === 'image') {
-      if (!imageFile) {
-        alert('Por favor, selecione uma imagem.');
-        setLoading(false);
-        return;
-      }
+      if (!imageFile) { alert('Por favor, selecione uma imagem.'); setLoading(false); return; }
       formData.append('type', 'image');
-      formData.append('image', imageFile); 
+      formData.append('image', imageFile);
     } else {
-      if (!textContent.trim()) {
-        alert('Por favor, escreva um texto.');
-        setLoading(false);
-        return;
-      }
+      if (!textContent.trim()) { alert('Por favor, escreva um texto.'); setLoading(false); return; }
       formData.append('type', 'text');
       formData.append('textContent', textContent);
     }
     
     try {
-      const response = await axios.post(API_URL, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
-      const newPostFromApi = response.data;
-
-      onAddPost(newPostFromApi);
-
+      const response = await axios.post(API_URL, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+      onAddPost(response.data);
     } catch (error) {
       console.error('Erro ao criar o post:', error);
       alert('Houve um erro ao salvar o post.');
@@ -73,7 +54,6 @@ function PostForm({ onAddPost }) {
             <option value="text">Texto</option>
           </select>
         </div>
-
         <div className={styles.control}>
           {type === 'image' ? (
             <>

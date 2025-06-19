@@ -3,21 +3,19 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  break-inside: avoid; 
-  margin-bottom: 15px; 
 }
 
 .imagePost img {
   width: 100%;
-  height: auto; 
-  display: block; 
+  height: auto;
+  display: block;
   transition: filter 0.4s ease-in-out, transform 0.4s ease-in-out;
   filter: grayscale(100%);
 }
 
 .imagePost:hover img {
   filter: grayscale(0%);
-  transform: scale(1.02); 
+  transform: scale(1.02);
 }
 
 .textPost {
@@ -29,3 +27,37 @@
   font-size: 1.1rem;
   color: #e0e0e0;
 }
+
+.postContainer {
+  position: relative;
+  break-inside: avoid;
+  margin-bottom: 15px; 
+}
+
+.deleteButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  width: 28px;
+  height: 28px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: scale(0.8);
+  
+  /* Remover aparência de caixa */
+  background: none;
+  border: none;
+  color: white; /* ou a cor desejada para o "X" */
+  padding: 0;
+  line-height: 1;
+}
+
+.postContainer:hover .deleteButton {
+  opacity: 1;
+  transform: scale(1);
+}
+

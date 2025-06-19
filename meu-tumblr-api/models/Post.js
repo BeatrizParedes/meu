@@ -1,3 +1,5 @@
+// Arquivo: models/Post.js
+
 const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
@@ -16,4 +18,5 @@ const PostSchema = new mongoose.Schema({
   timestamps: true,
 });
 
+// ✅ Verifique se esta linha está exatamente assim no final do seu arquivo
 module.exports = mongoose.model('Post', PostSchema);

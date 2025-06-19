@@ -1,28 +1,28 @@
 import React from 'react';
 import styles from './Post.module.css';
 
-function Post({ type, content, size }) {
-  const sizeClass = styles[size] || styles.medium;
-  
-  const postClasses = `${styles.post} ${sizeClass}`;
+function Post({ post, onDelete }) {
+  const { type, content, _id } = post; 
 
-  if (type === 'image') {
-    return (
-      <div className={`${postClasses} ${styles.imagePost}`}>
-        <img src={content} alt="Post do usuário" />
+  return (
+    <div className={styles.postContainer}>
+      <button className={styles.deleteButton} onClick={() => onDelete(_id)}>
+        &times;
+      </button>
+
+      <div className={styles.post}>
+        {type === 'image' ? (
+          <div className={styles.imagePost}>
+            <img src={content} alt="Post do usuário" />
+          </div>
+        ) : (
+          <div className={styles.textPost}>
+            <p>{content}</p>
+          </div>
+        )}
       </div>
-    );
-  }
-
-  if (type === 'text') {
-    return (
-      <div className={`${postClasses} ${styles.textPost}`}>
-        <p>{content}</p>
-      </div>
-    );
-  }
-
-  return null;
+    </div>
+  );
 }
 
 export default Post;

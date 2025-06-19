@@ -71,5 +71,26 @@ router.post('/', upload.single('image'), async (req, res) => {
     res.status(500).send('Erro no Servidor');
   }
 });
+router.delete('/:id', async (req, res) => {
+  try {
+    const post = await Post.findByIdAndDelete(req.params.id);
+    if (!post) {
+      return res.status(404).json({ msg: 'Post não encontrado para deletar' });
+    }
+    if (post.type === 'image' && post.cloudinary_id) {
+      await cloudinary.uploader.destroy(post.cloudinary_id);
+    }
+
+    res.json({ msg: 'Post removido com sucesso' });
+
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === 'ObjectId') {
+        return res.status(404).json({ msg: 'ID do Post inválido' });
+    }
+    res.status(500).send('Erro no Servidor');
+  }
+});
+
 
 module.exports = router;
