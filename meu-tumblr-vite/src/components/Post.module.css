@@ -1,0 +1,30 @@
+.post {
+  background-color: #2a2a2a;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  break-inside: avoid; 
+  margin-bottom: 15px; 
+}
+
+.imagePost img {
+  width: 100%;
+  height: auto; 
+  display: block; 
+  transition: filter 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.imagePost:hover img {
+  filter: grayscale(100%);
+  transform: scale(1.02); 
+}
+
+.textPost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+}

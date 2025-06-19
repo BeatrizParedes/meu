@@ -1,0 +1,70 @@
+.form {
+  background-color: #222;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+  border: 1px solid #333;
+}
+
+.title {
+  margin-top: 0;
+  text-align: center;
+  color: #eee;
+  font-weight: 500;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.control {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.control label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.control input,
+.control select {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 5px;
+  border: 1px solid #444;
+  background-color: #333;
+  color: #f1f1f1;
+  font-size: 1rem;
+}
+
+.control input:focus,
+.control select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background: #0056b3;
+}
