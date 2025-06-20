@@ -6,15 +6,13 @@ import PostForm from './components/PostForm.jsx';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-axios.get(`${API_URL}/api/posts`);
-
 function App() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get(API_URL);
+        const response = await axios.get(`${API_URL}/api/posts`);
         setPosts(response.data);
       } catch (error) {
         console.error("Erro ao buscar os posts:", error);
@@ -30,7 +28,7 @@ function App() {
   const handleDeletePost = async (id) => {
     try {
       if (window.confirm('Tem certeza que deseja excluir este post?')) {
-        await axios.delete(`${API_URL}/${id}`);
+        await axios.delete(`${API_URL}/api/posts/${id}`);
         setPosts(posts.filter(post => post._id !== id));
       }
     } catch (error) {
@@ -49,7 +47,6 @@ function App() {
         <PostForm onAddPost={addPost} />
       </main>
     </div>
-    
   );
 }
 
