@@ -1,9 +1,8 @@
 .form {
-  max-width: 720px;
-  margin: 0 auto 3rem auto;
   background-color: #222;
   padding: 1.5rem 2rem;
   border-radius: 8px;
+  margin-bottom: 3rem;
   border: 1px solid #333;
 }
 
