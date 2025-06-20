@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import styles from './PostForm.module.css';
 
-const API_URL = 'http://localhost:5000/api/posts';
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 function PostForm({ onAddPost }) {
   const [type, setType] = useState('image');
@@ -30,7 +30,7 @@ function PostForm({ onAddPost }) {
     }
     
     try {
-      const response = await axios.post(API_URL, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
+      const response = await axios.post(`${API_BASE_URL}/api/posts`, formData, { headers: { 'Content-Type': 'multipart/form-data' } });
       onAddPost(response.data);
     } catch (error) {
       console.error('Erro ao criar o post:', error);
@@ -45,32 +45,32 @@ function PostForm({ onAddPost }) {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-       <h2 className={styles.title}>Adicionar Novo Post</h2>
-       <div className={styles.controls}>
-        <div className={styles.control}>
-          <label htmlFor="type">Tipo</label>
-          <select id="type" value={type} onChange={(e) => setType(e.target.value)} disabled={loading}>
-            <option value="image">Imagem</option>
-            <option value="text">Texto</option>
-          </select>
-        </div>
-        <div className={styles.control}>
-          {type === 'image' ? (
-            <>
-              <label htmlFor="imageUpload">Upload da Imagem</label>
-              <input type="file" id="imageUpload" accept="image/*" onChange={handleFileChange} className={styles.fileInput} disabled={loading} />
-            </>
-          ) : (
-            <>
-              <label htmlFor="textContent">Texto</label>
-              <input type="text" id="textContent" value={textContent} onChange={(e) => setTextContent(e.target.value)} placeholder="Escreva algo..." disabled={loading} />
-            </>
-          )}
-        </div>
-      </div>
-      <button type="submit" className={styles.button} disabled={loading}>
-        {loading ? 'Salvando...' : 'Adicionar ao Mosaico'}
-      </button>
+        <h2 className={styles.title}>Adicionar Novo Post</h2>
+        <div className={styles.controls}>
+         <div className={styles.control}>
+           <label htmlFor="type">Tipo</label>
+           <select id="type" value={type} onChange={(e) => setType(e.target.value)} disabled={loading}>
+             <option value="image">Imagem</option>
+             <option value="text">Texto</option>
+           </select>
+         </div>
+         <div className={styles.control}>
+           {type === 'image' ? (
+             <>
+               <label htmlFor="imageUpload">Upload da Imagem</label>
+               <input type="file" id="imageUpload" accept="image/*" onChange={handleFileChange} className={styles.fileInput} disabled={loading} />
+             </>
+           ) : (
+             <>
+               <label htmlFor="textContent">Texto</label>
+               <input type="text" id="textContent" value={textContent} onChange={(e) => setTextContent(e.target.value)} placeholder="Escreva algo..." disabled={loading} />
+             </>
+           )}
+         </div>
+       </div>
+       <button type="submit" className={styles.button} disabled={loading}>
+         {loading ? 'Salvando...' : 'Adicionar ao Mosaico'}
+       </button>
     </form>
   );
 }
