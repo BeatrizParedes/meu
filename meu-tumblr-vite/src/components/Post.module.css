@@ -47,11 +47,10 @@
   opacity: 0;
   transition: opacity 0.3s ease, transform 0.3s ease;
   transform: scale(0.8);
-  
-  /* Remover aparência de caixa */
+
   background: none;
   border: none;
-  color: white; /* ou a cor desejada para o "X" */
+  color: white; 
   padding: 0;
   line-height: 1;
 }

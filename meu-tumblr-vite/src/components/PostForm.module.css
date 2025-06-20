@@ -48,14 +48,14 @@
 .control input:focus,
 .control select:focus {
   outline: none;
-  border-color: #007bff;
+  border-color: #b300ff;
 }
 
 .button {
   display: block;
   width: 100%;
   padding: 0.8rem 1rem;
-  background: #007bff;
+  background: #b300ff;
   color: white;
   border: none;
   border-radius: 5px;
@@ -66,5 +66,5 @@
 }
 
 .button:hover {
-  background: #0056b3;
+  background: #62008c;
 }
