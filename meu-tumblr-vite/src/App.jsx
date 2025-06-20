@@ -3,7 +3,6 @@ import axios from 'axios';
 import './App.css';
 import PostGrid from './components/PostGrid.jsx';
 import PostForm from './components/PostForm.jsx';
-import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const API_URL = 'http://localhost:5000/api/posts';
 
@@ -46,7 +45,6 @@ function App() {
       <main>
         <PostGrid posts={posts} onDeletePost={handleDeletePost} />
         <PostForm onAddPost={addPost} />
-        <SpeedInsights />
       </main>
     </div>
     
