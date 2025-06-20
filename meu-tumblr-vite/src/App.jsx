@@ -4,7 +4,9 @@ import './App.css';
 import PostGrid from './components/PostGrid.jsx';
 import PostForm from './components/PostForm.jsx';
 
-const API_URL = 'http://localhost:5000/api/posts';
+const API_URL = import.meta.env.VITE_API_URL;
+
+axios.get(`${API_URL}/api/posts`);
 
 function App() {
   const [posts, setPosts] = useState([]);
